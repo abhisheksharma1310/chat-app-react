@@ -6,7 +6,7 @@ import './styles/main.scss';
 function App() {
   return (
     <div>
-     Hellow
+     Hello
     </div>
   );
 }
