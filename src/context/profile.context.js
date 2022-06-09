@@ -48,4 +48,4 @@ export const ProfileProvider = ({ children}) => {
     );
 };
 
-export const useProfiles = () => useContext(ProfileContext);
+export const useProfile = () => useContext(ProfileContext);
