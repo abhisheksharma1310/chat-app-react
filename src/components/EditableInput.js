@@ -30,7 +30,7 @@ const EditableInput = ({ initialValue, onSave, label = null, placeholder = 'writ
         <div>
             {label}
             <InputGroup>
-                <Input {...inputProps} disabled={!isEditable} placeholder={placeholder} valse={input} onChange={onInputChange} />
+                <Input {...inputProps} disabled={!isEditable} placeholder={placeholder} value={input} onChange={onInputChange} />
                 <InputGroup.Button onClick={onEditClick}>
                     <Icon icon={isEditable ? 'close' : 'edit2'} />
                 </InputGroup.Button>
