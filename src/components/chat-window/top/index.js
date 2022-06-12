@@ -13,7 +13,7 @@ const ChatTop = () => {
     return (
         <div>
             <div className='d-flex justify-content-between align-items-center'>
-                <h4>
+                <h4 className='text-disappear d-flex align-items-center'>
                     <Icon componentClass={Link} to='/' icon='arrow-circle-left' size='2x' className={isMobile ? 'd-inline-block p-0 mr-2 text-blue link-unstyled' : 'd-none'} />
                     <span className='text-disappear'>{name}</span>   
                 </h4>
