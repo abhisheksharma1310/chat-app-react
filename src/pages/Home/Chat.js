@@ -4,6 +4,7 @@ import { Loader } from 'rsuite';
 import ChatBottom from '../../components/chat-window/buttom'
 import Messages from '../../components/chat-window/messages'
 import ChatTop from '../../components/chat-window/top'
+import { CurrentRoomProvider } from '../../context/current-room.context';
 import { useRooms } from '../../context/room.context';
 
 const Chat = () => {
@@ -23,8 +24,14 @@ const Chat = () => {
         </h6>
     }
 
+    const {name, description} = currentRoom;
+
+    const currentRoomData = {
+        name, description
+    }
+
     return (
-        <>
+        <CurrentRoomProvider data={currentRoomData}>
             <div className='chat-top'>
                 <ChatTop />
             </div>
@@ -34,7 +41,7 @@ const Chat = () => {
             <div className='chat-bottom'>
                 <ChatBottom/>
             </div>
-        </>
+        </CurrentRoomProvider>
     );
 };
 
