@@ -63,21 +63,21 @@ const CreateRoomBtnModel = () => {
                         <FormGroup>
                             <ControlLabel>Room name</ControlLabel>
                             <FormControl name='name' placeholder='Enter chat room name...'/>
-                        </FormGroup>
+                         </FormGroup>
 
                         <FormGroup>
                             <ControlLabel>Description</ControlLabel>
                             <FormControl componentClass='textarea' rows={5} name='description' placeholder='Enter room description...'/>
                         </FormGroup>    
                     </Form>
-                </Modal.Body>
+                </Modal.Body>   
                 <Modal.Footer>
                     <Button block appearance='primary' onClick={onSubmit} disabled={isLoading}>
                         Create new chat room
                     </Button>    
                 </Modal.Footer>    
             </Modal>
-        </div>
+        </div>  
     );
 };
 
