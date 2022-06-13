@@ -3,7 +3,7 @@ import { auth, database } from "../misc/firebase";
 import firebase from 'firebase/app'
 
 export const isOfflineForDatabase = {
-    state: 'ofline',
+    state: 'offline',
     last_changed: firebase.database.ServerValue.TIMESTAMP
 }
 
@@ -43,7 +43,7 @@ export const ProfileProvider = ({ children }) => {
                 //firebase online presence system
                 database.ref('.info/connected').on('value', (snapshot) => {
                     // If we're not currently connected, don't do anything.
-                    if (snapshot.val() === false) {
+                    if (!!snapshot.val() === false) {
                         return;
                     };
 
