@@ -7,11 +7,15 @@ import { Button } from 'rsuite';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { auth } from '../../../misc/firebase';
 import IconBtnControl from './IconBtnControl';
+import { useHover, useMediaQuery } from '../../../misc/custom-hooks';
 
-const MessageItem = ({ message, handleAdmin }) => {
+const MessageItem = ({ message, handleAdmin, handleLike }) => {
 
-    const {author, createdAt, text} = message;
+    const {author, createdAt, text, likes, likeCount} = message;
 
+    const [selfRef, isHovered] = useHover();
+    const isMobile = useMediaQuery(('(max-width: 992px)'));
+    
     const isAdmin = useCurrentRoom(v => v.isAdmin);
     const admins = useCurrentRoom(v => v.admins);
 
@@ -19,10 +23,11 @@ const MessageItem = ({ message, handleAdmin }) => {
     const isAuthor = auth.currentUser.uid === author.uid;
     const canGrantAdmin = isAdmin && !isAuthor;
 
-
+    const canShowIcons = isMobile || isHovered;
+    const isLiked = likes && Object.keys(likes).includes(auth.currentUser.uid);
 
     return (
-        <li className='padded mb-1 '>
+        <li className={`padded mb-1 cursor-pointer ${isHovered ? 'bg-black-02' : ''}`} ref={selfRef}>
             <div className='d-flex align-items-center font-bolder mb-1'>
                 <PresenceDot uid={author.uid}/>
                 <ProfileAvatar src={author.avatar} name={author.name} className='ml-1' size='xs'/>
@@ -39,12 +44,12 @@ const MessageItem = ({ message, handleAdmin }) => {
             </div>
 
             <IconBtnControl
-                {...(true ? {color: 'red'} : {})}
-                isVisible
+                {...(isLiked ? {color: 'red'} : {})}
+                isVisible = {canShowIcons}
                 iconName = "heart"
                 tooltip = "Like this message"
-                onClick={()=>{}}
-                badgeContent = {5}
+                onClick={()=>handleLike(message.id)}
+                badgeContent = {likeCount}
             />
 
             <div>
