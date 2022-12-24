@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Divider } from 'rsuite';
-import CreateRoomBtnModel from './Dashboard/CreateRoomBtnModel';
+import CreateRoomBtnModel from './CreateRoomBtnModel';
 import DashboardToggle from './Dashboard/DashboardToggle';
 import ChatRoomList from './rooms/ChatRoomList';
 

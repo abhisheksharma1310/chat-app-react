@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfileAvatar from '../../Dashboard/ProfileAvatar';
+import ProfileAvatar from '../../ProfileAvatar';
 import TimeAgo from 'timeago-react';
 import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 import PresenceDot from '../../PresenceDot';

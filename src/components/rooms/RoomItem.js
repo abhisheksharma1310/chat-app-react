@@ -1,6 +1,6 @@
 import React from 'react'
 import TimeAgo from 'timeago-react';
-import ProfileAvatar from '../Dashboard/ProfileAvatar';
+import ProfileAvatar from '../ProfileAvatar';
 
 const RoomItem = ({ room }) => {
 

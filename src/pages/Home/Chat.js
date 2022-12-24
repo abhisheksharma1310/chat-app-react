@@ -6,6 +6,8 @@ import Messages from '../../components/chat-window/messages'
 import ChatTop from '../../components/chat-window/top'
 import { CurrentRoomProvider } from '../../context/current-room.context';
 import { useRooms } from '../../context/room.context';
+import { auth } from '../../misc/firebase';
+import { transformToArr } from '../../misc/helper';
 
 const Chat = () => {
 
@@ -26,8 +28,11 @@ const Chat = () => {
 
     const {name, description} = currentRoom;
 
+    const admins =  transformToArr(currentRoom.admins);
+    const isAdmin = admins.includes(auth.currentUser.uid);
+
     const currentRoomData = {
-        name, description
+        name, description, admins, isAdmin
     }
 
     return (

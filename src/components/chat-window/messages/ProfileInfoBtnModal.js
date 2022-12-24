@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Modal} from 'rsuite';
 import {useModalState} from '../../../misc/custom-hooks';
-import ProfileAvatar from '../../Dashboard/ProfileAvatar';
+import ProfileAvatar from '../../ProfileAvatar';
 
 const ProfileInfoBtnModal = ({ profile, ...btnProps}) => {
 
