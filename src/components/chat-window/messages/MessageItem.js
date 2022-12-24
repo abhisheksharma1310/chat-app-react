@@ -6,6 +6,7 @@ import PresenceDot from '../../PresenceDot';
 import { Button } from 'rsuite';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { auth } from '../../../misc/firebase';
+import IconBtnControl from './IconBtnControl';
 
 const MessageItem = ({ message, handleAdmin }) => {
 
@@ -36,6 +37,16 @@ const MessageItem = ({ message, handleAdmin }) => {
                     datetime={createdAt}
                     className='font-normal text-black-45 ml-2' />
             </div>
+
+            <IconBtnControl
+                {...(true ? {color: 'red'} : {})}
+                isVisible
+                iconName = "heart"
+                tooltip = "Like this message"
+                onClick={()=>{}}
+                badgeContent = {5}
+            />
+
             <div>
                 <span className='word-break-all'>{text}</span>
             </div>
