@@ -25,6 +25,7 @@ const Messages = () => {
     }
   },[chatId]);
 
+  //function to handle room admin
   const handleAdmin = useCallback(async (uid) => {
     const adminRef = database.ref(`/rooms/${chatId}/admins`);
     let alertMsg;
@@ -43,6 +44,7 @@ const Messages = () => {
     Alert.info(alertMsg, 4000);
   }, [chatId]);
 
+  //function to handle message like
   const handleLike = useCallback(async(msgId) => {
     const {uid} = auth.currentUser;
     const messageRef = database.ref(`/messages/${msgId}`);
@@ -67,10 +69,39 @@ const Messages = () => {
     Alert.info(alertMsg, 4000);
   }, []);
 
+  //Function to handle delete message
+  const handleDelete = useCallback(async(msgId) => {
+    if(!window.confirm('You want to delete this message?')){
+      return;
+    }
+    const isLast = messages[messages.length - 1].id === msgId;
+    const updates = {};
+    updates[`/messages/${msgId}`] = null;
+    if(isLast && messages.length > 1){
+      updates[`/rooms/${chatId}/lastMessage`] = {
+        ...messages[messages.length - 2],
+        msgId: messages[messages.length - 2].id
+      }
+    }
+
+    if(isLast && messages.length === 1){
+      updates[`/rooms/${chatId}/lastMessage`] = null;
+    }
+
+    try {
+      await database.ref().update(updates);
+      Alert.info('Message has been deleted');
+    } catch (error) {
+      Alert.error(error.message);
+    }
+
+  },[messages, chatId]);
+
+  //Return messages components in chat window
   return (
     <ul className='msg-list custom-scroll'>
         {isChatEmpty && <li>No messages yet</li>}
-        {canShowMessages && messages.map(msg => <MessageItem key={msg.id} message={msg} handleAdmin={handleAdmin} handleLike={handleLike}/>)}
+        {canShowMessages && messages.map(msg => <MessageItem key={msg.id} message={msg} handleAdmin={handleAdmin} handleLike={handleLike} handleDelete={handleDelete}/>)}
     </ul>
   );
 };
