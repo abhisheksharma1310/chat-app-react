@@ -1,7 +1,7 @@
 <h1 align="center">Chat web application</h1>
 
 <p align="center">
-<img src="Screenshots/chat_app.jpg"></p>
+<img src="https://i.ibb.co/bQnGvRx/chat-app-nobg.png"></p>
 
 <h2 align="center"><a href="https://chatwebreactapp.web.app/">👆 Click here for live demo 💻</a></h2>
 
