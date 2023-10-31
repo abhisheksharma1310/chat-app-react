@@ -31,7 +31,7 @@ You can also record your voice whithin the app and send it. Also you can see pic
 
 ## App Features
 
-- Login using Google and Facebook.
+- Login using Google, Facebook and as Guest.
 
 - Chat to many people in real time.
 
